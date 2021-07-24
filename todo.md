@@ -32,12 +32,13 @@
 - [ ] DB からレコードをとってくる
 - [ ] コード整理
   - [ ] DTO 作る
+- [ ] user に unique
 
 ### test
 
 - localhost:3000/user
-- curl -X POST -H "Content-Type: application/json" -d '{"name":"hoge", "password":"pass"}' localhost:3000/user
-- curl -X POST http://localhost:3000/auth/login -d '{"name": "hoge", "password": "pass"}' -H "Content-Type: application/json"
+- curl -X POST -H "Content-Type: application/json" -d '{"name":"huga", "password":"pass"}' localhost:3000/user
+- curl -X POST http://localhost:3000/auth/login -d '{"username": "huga", "password": "pass"}' -H "Content-Type: application/json"
 
 ### signup
 

@@ -11,6 +11,11 @@ export class UserController {
     return this.service.getUserList();
   }
 
+  @Get()
+  getUser(name: string) {
+    return this.service.getUser(name);
+  }
+
   @Post()
   addUser(@Body() body: CreateUserDTO) {
     return this.service.addUser(body.name, body.password);
