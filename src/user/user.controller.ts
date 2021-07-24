@@ -1,5 +1,6 @@
-import { Controller, Get, Post, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { UserService } from './user.service';
+import { CreateUserDTO } from './user.dto';
 
 @Controller('user')
 export class UserController {
@@ -11,7 +12,7 @@ export class UserController {
   }
 
   @Post()
-  addUser(@Query() query: { name: string; password: string }) {
-    return this.service.addUser(query.name, query.password);
+  addUser(@Body() body: CreateUserDTO) {
+    return this.service.addUser(body.name, body.password);
   }
 }

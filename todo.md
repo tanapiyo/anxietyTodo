@@ -15,6 +15,7 @@
   - https://qiita.com/elipmoc101/items/9b1e6b3efa62f3c2a166#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E4%BD%9C%E6%88%90db%E6%93%8D%E4%BD%9C%E3%81%BE%E3%81%A7
   - 公式ドキュメント
   - entity 作って、マイグレーションする
+- https://qiita.com/potato4d/items/64a1f518abdfe281ce01
 
 ### postUser / getUser
 
@@ -30,6 +31,13 @@
   - [ ] post の口を作る
 - [ ] DB からレコードをとってくる
 - [ ] コード整理
+  - [ ] DTO 作る
+
+### test
+
+- localhost:3000/user
+- curl -X POST -H "Content-Type: application/json" -d '{"name":"hoge", "password":"pass"}' localhost:3000/user
+- curl -X POST http://localhost:3000/auth/login -d '{"name": "hoge", "password": "pass"}' -H "Content-Type: application/json"
 
 ### signup
 
@@ -54,3 +62,9 @@
 ### postCalendar
 
 ### swagger
+
+## memo
+
+### 依存関係エラー
+
+- export していないで発生することが多い
