@@ -15,10 +15,13 @@ import { ObjectModule } from './object/object.module';
 import { HabitController } from './habit/habit.controller';
 import { HabitService } from './habit/habit.service';
 import { HabitModule } from './habit/habit.module';
+import { CalendarController } from './calendar/calendar.controller';
+import { CalendarService } from './calendar/calendar.service';
+import { CalendarModule } from './calendar/calendar.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), AnxietyModule, UserModule, AuthModule, ObjectModule, HabitModule],
-  controllers: [AppController, AnxietyController, UserController, ObjectController, HabitController],
-  providers: [AppService, AnxietyService, UserService, ObjectService, HabitService],
+  imports: [TypeOrmModule.forRoot(), AnxietyModule, UserModule, AuthModule, ObjectModule, HabitModule, CalendarModule],
+  controllers: [AppController, AnxietyController, UserController, ObjectController, HabitController, CalendarController],
+  providers: [AppService, AnxietyService, UserService, ObjectService, HabitService, CalendarService],
 })
 export class AppModule {}
