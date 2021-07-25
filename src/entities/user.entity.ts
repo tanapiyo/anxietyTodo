@@ -6,11 +6,12 @@ import { HabitEntity } from './habit.entity';
 import { CalendarEntity } from './calendar.entity';
 
 @Entity('user')
+// @Unique(["name"])
 export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: 100 })
+  @Column({ length: 100, nullable: false })
   @MaxLength(100)
   name: string;
 

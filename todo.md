@@ -32,21 +32,6 @@
 - [ ] DB からレコードをとってくる
 - [ ] コード整理
   - [ ] DTO 作る
-- [ ] user に unique
-
-### test
-
-- localhost:3000/user
-- curl -X POST -H "Content-Type: application/json" -d '{"name":"huga", "password":"pass"}' localhost:3000/user
-- curl -X POST http://localhost:3000/auth/login -d '{"username": "huga", "password": "pass"}' -H "Content-Type: application/json"
-
-### signup
-
-### signin
-
-### postAnxiety / getAnxiety
-
-### (Edit, Delete)
 
 ### getObjectAndHabits
 
@@ -69,3 +54,36 @@
 ### 依存関係エラー
 
 - export していないで発生することが多い
+
+## 残タスク
+
+- [ ] user に unique 制約を入れる
+- [ ] password を bcrypt
+- [ ] テストかく
+- [ ] エラーハンドリング
+- [ ] ログレベル操作（いるかな）
+
+## test
+
+- localhost:3000/user みたいにテストできる
+
+### ログイン
+
+- signup
+  - curl -X POST -H "Content-Type: application/json" -d '{"name":"huga", "password":"pass"}' localhost:3000/user
+- signin
+  - curl -X POST http://localhost:3000/auth/login -d '{"username": "huga", "password": "pass"}' -H "Content-Type: application/json"
+
+### anxiety
+
+- get
+  - Talend API で叩く
+  - curl http://localhost:3000/anxiety -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imh1Z2EiLCJzdWIiOjIsImlhdCI6MTYyNzEzODQ1NSwiZXhwIjoxNjI3MTM5NjU1fQ.omv1MvL1Zda-YZmCqGjgZcgxgdmksgddafa3WAp2drw"
+- post
+  - curl http://localhost:3000/anxiety -d '{"userId": 1, "content": "testanxiety"}' -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imh1Z2EiLCJzdWIiOjIsImlhdCI6MTYyNzEzODQ1NSwiZXhwIjoxNjI3MTM5NjU1fQ.omv1MvL1Zda-YZmCqGjgZcgxgdmksgddafa3WAp2drw"
+- patch
+  - curl -X PATCH -H "Content-Type: application/json" -d '{"id":1, "content": "testupdate"}' http://localhost:3000/anxiety
+- delete
+  - curl -X DELETE -H "Content-Type: application/json" -d '{"id":1}' http://localhost:3000/anxiety
+
+###

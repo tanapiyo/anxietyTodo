@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { UserEntity } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateUserDTO } from './user.dto';
+
 @Injectable()
 export class UserService {
   constructor(
@@ -21,10 +21,15 @@ export class UserService {
     return this.userEntityRepository.find();
   }
 
-  getUser(name: string): Promise<UserEntity[] | undefined> {
-    const user = this.userEntityRepository.find({
+  getUser(name: string): Promise<UserEntity | undefined> {
+    const user = this.userEntityRepository.findOne({
       name: name,
     });
+    return user;
+  }
+
+  getUserFromId(userId: number): Promise<UserEntity | undefined> {
+    const user = this.userEntityRepository.findOne(userId);
     return user;
   }
 }

@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 import { IsDate, IsInt, IsBoolean } from 'class-validator';
 import { UserEntity } from './user.entity';
 
@@ -33,5 +39,6 @@ export class CalendarEntity {
   updatedAt: Date;
 
   @ManyToOne(() => UserEntity, (user) => user.calendar)
+  @JoinColumn({ name: 'userId' })
   readonly user?: UserEntity;
 }

@@ -2,12 +2,11 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  OneToMany,
+  JoinColumn,
   ManyToOne,
 } from 'typeorm';
 import { IsDate } from 'class-validator';
 import { UserEntity } from './user.entity';
-import { AnxietyEntity } from './anxiety.entity';
 import { ObjectEntity } from './object.entity';
 
 @Entity('habit')
@@ -23,12 +22,14 @@ export class HabitEntity {
   createdAt: Date;
 
   @IsDate()
-  @Column({ type: 'datetime', nullable: false })
+  @Column({ type: 'datetime' })
   updatedAt: Date;
 
   @ManyToOne(() => UserEntity, (user) => user.object)
+  @JoinColumn({ name: 'userId' })
   readonly user?: UserEntity;
 
   @ManyToOne(() => ObjectEntity, (object) => object.habit)
+  @JoinColumn({ name: 'objectId' })
   readonly object?: ObjectEntity;
 }

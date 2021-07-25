@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   OneToMany,
   ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 import { IsDate } from 'class-validator';
 import { UserEntity } from './user.entity';
@@ -23,13 +24,15 @@ export class ObjectEntity {
   createdAt: Date;
 
   @IsDate()
-  @Column({ type: 'datetime', nullable: false })
+  @Column({ type: 'datetime' })
   updatedAt: Date;
 
   @ManyToOne(() => UserEntity, (user) => user.object)
+  @JoinColumn({ name: 'userId' })
   readonly user?: UserEntity;
 
   @ManyToOne(() => UserEntity, (anxiety) => anxiety.object)
+  @JoinColumn({ name: 'anxietyId' })
   readonly anxiety?: AnxietyEntity;
 
   @OneToMany(() => HabitEntity, (habit) => habit.object)
